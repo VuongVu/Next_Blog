@@ -15,8 +15,9 @@ const HOST = process.env.BASE_URL || 'localhost';
 
 app.prepare()
   .then(() => {
+    mongoose.Promise = global.Promise;
     // Connect to MongoDB
-    mongoose.connect(MONGO_URL, {}, (err) => {
+    mongoose.connect(MONGO_URL, { useMongoClient: true }, (err) => {
       // Error handle
       if (err) {
         console.log(`Unable to connect to the MongoDB server: ${err}`);
