@@ -1,6 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "css.remoteStyleSheets": [
-    "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"
+    "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css",
+    "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   ]
 }

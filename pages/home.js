@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
-import Page from '../components/Page'
+import Layout from '../hocs/Layout'
 
 export default class extends Component {
   render() {
@@ -9,9 +9,9 @@ export default class extends Component {
         <Head>
           <title>Life stories</title>
         </Head>
-        <Page>
+        <Layout>
           <h4>Hello World</h4>
-        </Page>
+        </Layout>
       </div>
     )
   }
