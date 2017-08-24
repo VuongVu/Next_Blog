@@ -9,7 +9,7 @@ import withData from '../lib/withData'
 import redirect from '../lib/redirect'
 import checkLoggedIn from '../lib/check-logged-in'
 
-class Home extends Component {
+class User extends Component {
   static async getInitialProps(context, apolloClient) {
     const { loggedInUser } = await checkLoggedIn(context, apolloClient)
 
@@ -33,17 +33,17 @@ class Home extends Component {
       redirect({}, '/sign-in')
     })
   }
-
-  render() {
+  
+  render() {    
     return (
       <div>
         <Head>
-          <title>Life stories</title>
+          <title>{this.props.loggedInUser.user.username} - Life Stories</title>
         </Head>
         <Layout>
-          <h4>Hello World</h4>
-          <h2>Hello {this.props.loggedInUser.user.name}!</h2>
-          <button onClick={this.signout}>Sign out</button>
+          <div>
+            User Profile Page
+          </div>
         </Layout>
       </div>
     )
@@ -55,4 +55,4 @@ export default compose (
   withData,
   // withApollo exposes `this.props.client` used when logging out
   withApollo
-)(Home)
+)(User)
