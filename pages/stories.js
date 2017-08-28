@@ -7,7 +7,7 @@ export default class Stories extends Component {
     return (
       <div>
         <Head>
-          <title>Stories</title>
+          <title>Stories - Life Stories</title>
         </Head>
         <Layout>
           <div>

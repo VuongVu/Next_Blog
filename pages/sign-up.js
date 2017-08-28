@@ -51,7 +51,7 @@ export default class SignUp extends Component {
                       <p className="help">By clicking on "Create an account" below, you are agreeing to join Life Stories :)</p>
                       <hr />
                       <p className="control">
-                        <button className="button is-su  ccess">Create an account</button>
+                        <button className="button is-success">Create an account</button>
                       </p>
                     </div>
                   </div>

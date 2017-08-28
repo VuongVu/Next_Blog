@@ -1,39 +1,9 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
-import cookie from 'cookie'
-import { withApollo, compose } from 'react-apollo'
 
 import Layout from '../hocs/Layout'
 
-import withData from '../lib/withData'
-import redirect from '../lib/redirect'
-import checkLoggedIn from '../lib/check-logged-in'
-
-class Home extends Component {
-  static async getInitialProps(context, apolloClient) {
-    const { loggedInUser } = await checkLoggedIn(context, apolloClient)
-
-    if (!loggedInUser.user) {
-      // If not signed in, send them somewhere more useful
-      redirect(context, '/sign-in')
-    }
-
-    return { loggedInUser }
-  }
-
-  signout = () => {
-    document.cookie = cookie.serialize('token', '', {
-      maxAge: -1 // Expire the cookie immediately
-    })
-
-    // Force a reload of all the current queries now that the user is
-    // logged in, so we don't accidentally leave any state around.
-    this.props.client.resetStore().then(() => {
-      // Redirect to a more useful page when signed out
-      redirect({}, '/sign-in')
-    })
-  }
-
+export default class Home extends Component {
   render() {
     return (
       <div>
@@ -41,18 +11,20 @@ class Home extends Component {
           <title>Life stories</title>
         </Head>
         <Layout>
-          <h4>Hello World</h4>
-          <h2>Hello {this.props.loggedInUser.user.name}!</h2>
-          <button onClick={this.signout}>Sign out</button>
+          <section className="hero is-medium is-primary is-bold">
+            <div className="hero-body has-text-centered">
+              <div className="container">
+                <h1 className="title">
+                  Welcome to the Life Stories
+                </h1>
+                <h2 className="subtitle">
+                  Good stories give strength to ourselves and inspire good stories in others.
+                </h2>
+              </div>
+            </div>
+          </section>
         </Layout>
       </div>
     )
   }
 }
-
-export default compose (
-  // withData gives us server-side graphql queries before rendering
-  withData,
-  // withApollo exposes `this.props.client` used when logging out
-  withApollo
-)(Home)
